@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,6 +41,12 @@ public class AlunoResources {
 		a = service.insert(a);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(a.getId()).toUri();
 		return ResponseEntity.created(uri).body(a);
+	}
+	
+	@PutMapping(value="/{id}/{id_c}")
+	public ResponseEntity<Aluno> matricularAluno(@PathVariable("id") Long id, @PathVariable("id_c") Long id_c) {
+		Aluno a = service.matricularAluno(id, id_c);
+		return ResponseEntity.ok(a);
 	}
 	
 }

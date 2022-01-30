@@ -6,6 +6,8 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import ale.haritos.projeto1_Springboot.entities.pk.Matricula_pk;
 import ale.haritos.projeto1_Springboot.enuns.Status;
 
@@ -42,6 +44,7 @@ public class Matricula implements Serializable{
 		id.setAluno(a);
 	}
 	
+	@JsonIgnore
 	public Aluno getAluno() {
 		return id.getAluno();
 	}

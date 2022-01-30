@@ -24,9 +24,10 @@ public class Professor extends Pessoa {
 	}
 
 
-	public Professor(Long id, String nome, String telefone, String email, Double salarioBruto) {
+	public Professor(Long id, String nome, String telefone, String email, Double salarioBruto, Curso c) {
 		super(id, nome, telefone, email);
 		this.salarioBruto = salarioBruto;
+		this.curso = c;
 	}
 
 
@@ -37,7 +38,19 @@ public class Professor extends Pessoa {
 	public void setSalarioBruto(Double salarioBruto) {
 		this.salarioBruto = salarioBruto;
 	}
+
+
+	public Curso getCurso() {
+		return curso;
+	}
+
+
+	public void setCurso(Curso curso) {
+		this.curso = curso;
+	}
 	
-	
+	public Double getSalarioLiquido() {
+		return this.salarioBruto - this.salarioBruto * 0.25;
+	}
 	
 }

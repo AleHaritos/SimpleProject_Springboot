@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name ="`cursos`")
 public class Curso implements Serializable{
@@ -26,7 +28,7 @@ public class Curso implements Serializable{
 	@Column(length = 100, nullable = false)
 	private String nome_curso;
 	
-	
+	@JsonIgnore
 	@OneToMany(mappedBy = "curso")
 	private Set<Professor> professores = new HashSet<>();
 	
@@ -58,6 +60,15 @@ public class Curso implements Serializable{
 
 	public void setNome_curso(String nome_curso) {
 		this.nome_curso = nome_curso;
+	}
+	
+	@JsonIgnore
+	public Set<Matricula> getMatriculas() {
+		return this.matriculas;
+	}
+	
+	public Set<Professor> getProfessores() {
+		return this.professores;
 	}
 
 	@Override
